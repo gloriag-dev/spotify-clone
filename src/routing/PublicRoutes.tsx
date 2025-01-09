@@ -3,6 +3,7 @@ import LoginCard from "../custom/LoginCard";
 import RegisterCard from "../custom/RegisterCard";
 import { useAuth0 } from "@auth0/auth0-react";
 import { setUrl } from "../auth/utils";
+import App from "@/App";
 
 export const PublicRoutes = () => {
   const auth0 = useAuth0();
@@ -21,14 +22,14 @@ export const PublicRoutes = () => {
   };
   return (
     <div>
-      <header>
+      {/* <header>
         {!auth0.isAuthenticated && <button onClick={onLogin}> Login</button>}
         {auth0.isAuthenticated && <button onClick={onLogout}> Logout</button>}
-      </header>
+      </header> */}
 
       <Routes>
         <Route path="/" element={<LoginCard />} />
-        <Route path="/products" element={<RegisterCard />} />
+        <Route path="/register" element={<RegisterCard />} />
       </Routes>
     </div>
   );
