@@ -1,6 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { Route, Routes } from "react-router-dom";
-import LoginCard from "@/custom/LoginCard";
+import LoginCard from "@/pages/LoginCard";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const AuthorizationGateway = (props: any) => {

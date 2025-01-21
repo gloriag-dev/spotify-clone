@@ -19,7 +19,7 @@ import { Input } from "@/components/ui/input";
 import Logo from "@/icons/Logo";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
-import SocialLoginGroup from "./SocialLoginGroup";
+import SocialLoginGroup from "../common/SocialLoginGroup";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { z } from "zod";

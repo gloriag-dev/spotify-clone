@@ -1,4 +1,4 @@
-import LoginCard from "./custom/LoginCard";
+import LoginCard from "./pages/LoginCard";
 
 function App() {
   return (

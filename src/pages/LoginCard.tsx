@@ -21,11 +21,13 @@ import { Field, useForm } from "react-hook-form";
 import { useState } from "react";
 import PasswordHiddenPlaceHolder from "@/icons/PasswordHiddenPlaceHolder";
 import PasswordShownPlaceHolder from "@/icons/PasswordShownPlaceholder";
-import SocialLoginGroup from "./SocialLoginGroup";
+import SocialLoginGroup from "../common/SocialLoginGroup";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useCoreStore } from "@/store/coreStore";
+import { useNavigate } from "react-router-dom";
 type Props = {
   className?: string;
 };
@@ -37,7 +39,8 @@ type LoginFormValues = {
 const LoginCard = ({ className }: Props) => {
   const [showIcon, setShowIcon] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
-
+  const { setIsAuthenticated, updateUserId } = useCoreStore();
+  const navigate = useNavigate();
   const form = useForm({
     mode: "onChange",
     reValidateMode: "onChange",
@@ -50,13 +53,21 @@ const LoginCard = ({ className }: Props) => {
   });
   const mutation = useMutation({
     mutationFn: (values: LoginFormValues) => {
+      console.log(values, "values");
       return axios.post("/login", values);
     },
   });
 
   const onSubmit = async (values: any) => {
-    await mutation.mutateAsync(values);
-    form.reset();
+    try {
+      const response = await mutation.mutateAsync(values);
+      setIsAuthenticated(true);
+      updateUserId(response.data.username);
+      form.reset();
+      navigate("/app/home");
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="bg-gradient-to-b from-neutral-700  to-black h-screen ">

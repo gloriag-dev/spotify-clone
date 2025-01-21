@@ -1,9 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import LoginCard from "../custom/LoginCard";
-import RegisterCard from "../custom/RegisterCard";
+import LoginCard from "../pages/LoginCard";
+import RegisterCard from "../pages/RegisterCard";
 import { useAuth0 } from "@auth0/auth0-react";
 import { setUrl } from "../auth/utils";
-import App from "@/App";
 
 export const PublicRoutes = () => {
   const auth0 = useAuth0();
