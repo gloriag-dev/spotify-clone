@@ -1,17 +1,20 @@
 import { Route, Routes } from "react-router-dom";
 import { AuthorizationGateway } from "../auth/AuthorizationGateway/AuthorizationGateway";
 import App from "@/App";
-import { Home } from "@/pages/Home";
+
+import Navbar from "@/common/Navbar";
+import Player from "@/common/Player";
 
 export const ProtectedRoutes = () => {
   return (
-    <div>
-      <AuthorizationGateway>
-        <Routes>
-          <Route path="/app/home" element={<App />} />
-        </Routes>
-      </AuthorizationGateway>
-    </div>
+    <AuthorizationGateway>
+      <Navbar />
+      <Routes>
+        <Route path="/home" element={<App />} />
+        <Route path="*" element={<div>404</div>} />
+      </Routes>
+      <Player />
+    </AuthorizationGateway>
   );
 };
 

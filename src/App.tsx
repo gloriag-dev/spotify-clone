@@ -1,15 +1,9 @@
-import LoginCard from "./pages/LoginCard";
-
-function App() {
+const App = () => {
   return (
-    <div className="bg-primary ">
-      {/* <main className="flex justify-center ">
-        <LoginCard className="mt-6 bg-primary min-w-[734px] mb-6 h-2/3" />
-      </main> */}
-
-      <h1 className=" font-bold underline text-secondary">app</h1>
-    </div>
+    <main className="w-full h-screen bg-gradient-to-b from-neutral-700  to-black ">
+      HOME
+    </main>
   );
-}
+};
 
 export default App;
